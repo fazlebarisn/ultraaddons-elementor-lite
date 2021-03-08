@@ -132,6 +132,14 @@ $widgetsArray = [
                 __( 'Pro', 'ultraaddons' ),
             ],
     ],
+    'Card' => [
+            'name'  => __( 'Simple Card', 'ultraaddons' ),
+            'is_free'   => true,
+            'icon'      => 'eicon-lock-user',
+            'cat'       => [
+                __( 'Basic', 'ultraaddons' ),
+            ],
+    ],
     
     
 ];
