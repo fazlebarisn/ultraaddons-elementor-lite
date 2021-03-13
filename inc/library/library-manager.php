@@ -10,13 +10,21 @@ class Library_Manager{
     protected static $source = null;
     
     private static $assets;
+    private static $dir;
     
     
 
     public static function init(){
+        self::$dir = dirname(__FILE__) . '/';
         
         //Handle Assets (CSS and JavaScript) File handle/manage. Loading on Screen and Preview Page
         self::asset_manage();
+        
+        // print views and tab variables on footer.
+        add_action( 'elementor/editor/footer', [__CLASS__, 'admin_inline_js'] );
+        add_action( 'elementor/editor/footer', [__CLASS__, 'print_views'] );
+        
+        
         
         //var_dump(\Elementor\Plugin::instance()->templates_manager);
         
@@ -25,50 +33,50 @@ class Library_Manager{
     }
     
     public static function register_ajax_actions( Ajax $ajax ) {
-        var_dump( $ajax->ajax_actions );
-//		$ajax->register_ajax_action( 'get_elementskit_library_data', function( $data ) {
-//			if ( ! current_user_can( 'edit_posts' ) ) {
-//				throw new \Exception( 'Access Denied' );
-//			}
-//
-//			if ( ! empty( $data['editor_post_id'] ) ) {
-//				$editor_post_id = absint( $data['editor_post_id'] );
-//
-//				if ( ! get_post( $editor_post_id ) ) {
-//					throw new \Exception( __( 'Post not found.', 'elementskit-lite' ) );
-//				}
-//
-//				\Elementor\Plugin::instance()->db->switch_to_post( $editor_post_id );
-//			}
-//
-//			$result = self::get_library_data( $data );
-//                        var_dump($result);
-//			return $result;
-//		} );
 
-//		$ajax->register_ajax_action( 'get_elementskit_template_data', function( $data ) {
-//			if ( ! current_user_can( 'edit_posts' ) ) {
-//				throw new \Exception( 'Access Denied' );
-//			}
-//
-//			if ( ! empty( $data['editor_post_id'] ) ) {
-//				$editor_post_id = absint( $data['editor_post_id'] );
-//
-//				if ( ! get_post( $editor_post_id ) ) {
-//					throw new \Exception( __( 'Post not found', 'elementskit-lite' ) );
-//				}
-//
-//				\Elementor\Plugin::instance()->db->switch_to_post( $editor_post_id );
-//			}
-//
-//			if ( empty( $data['template_id'] ) ) {
-//				throw new \Exception( __( 'Template id missing', 'elementskit-lite' ) );
-//			}
-//
-//			$result = self::get_template_data( $data );
-//
-//			return $result;
-//		} );
+		$ajax->register_ajax_action( 'get_elementskit_library_data', function( $data ) {
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				throw new \Exception( 'Access Denied' );
+			}
+
+			if ( ! empty( $data['editor_post_id'] ) ) {
+				$editor_post_id = absint( $data['editor_post_id'] );
+
+				if ( ! get_post( $editor_post_id ) ) {
+					throw new \Exception( __( 'Post not found.', 'elementskit-lite' ) );
+				}
+
+				\Elementor\Plugin::instance()->db->switch_to_post( $editor_post_id );
+			}
+
+			$result = self::get_library_data( $data );
+                        var_dump($result);
+			return $result;
+		} );
+
+		$ajax->register_ajax_action( 'get_elementskit_template_data', function( $data ) {
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				throw new \Exception( 'Access Denied' );
+			}
+
+			if ( ! empty( $data['editor_post_id'] ) ) {
+				$editor_post_id = absint( $data['editor_post_id'] );
+
+				if ( ! get_post( $editor_post_id ) ) {
+					throw new \Exception( __( 'Post not found', 'elementskit-lite' ) );
+				}
+
+				\Elementor\Plugin::instance()->db->switch_to_post( $editor_post_id );
+			}
+
+			if ( empty( $data['template_id'] ) ) {
+				throw new \Exception( __( 'Template id missing', 'elementskit-lite' ) );
+			}
+
+			$result = self::get_template_data( $data );
+
+			return $result;
+		} );
 	}    
 
     public static function testing() {
@@ -78,7 +86,88 @@ class Library_Manager{
 //        \Elementor\Plugin::instance()->templates_manager->unregister_source('remote');
         
     }
-        
+     
+    public static function print_views(){
+		foreach ( glob( self::$dir . 'views/editor/*.php' ) as $file ) {
+			$name = basename( $file, '.php' );
+			ob_start();
+			include $file;
+			printf( '<script type="text/html" id="view-elementskit-%1$s">%2$s</script>', $name, ob_get_clean() );
+		}
+	}
+    public static function admin_inline_js() { ?>
+		<script type="text/javascript" >
+
+		var UltraAddonsLibraryData = {
+			"libraryButton": "Elements Button",
+			"modalRegions": {
+				"modalHeader": ".dialog-header",
+				"modalContent": ".dialog-message"
+			},
+			"license": {
+				"activated": true,
+				"link": ""
+			},
+			"tabs": {
+				"elementskit_page": {
+					"title": "Ready Pages",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": true,
+						"show_keywords": true
+					}
+				},
+				"elementskit_header": {
+					"title": "Headers",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_footer": {
+					"title": "Footers",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_section": {
+					"title": "Sections",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				"elementskit_widget": {
+					"title": "Widget Presets",
+					"data": [],
+					"sources": ["elementskit-theme", "elementskit-api"],
+					"settings": {
+						"show_title": false,
+						"show_keywords": true
+					}
+				},
+				// "local": {
+				// 	"title": "My Library",
+				// 	"data": [],
+				// 	"sources": ["elementskit-local"],
+				// 	"settings": []
+				// }
+			},
+			"defaultTab": "elementskit_page"
+		};
+                console.log(UltraAddonsLibraryData);
+		</script> <?php
+	}
+    
+    
     /**
      * Undocumented function
      *

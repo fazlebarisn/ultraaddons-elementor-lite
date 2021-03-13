@@ -1,6 +1,6 @@
 ! function(e) {
     "use strict";
-    var t, i, n, a = window.ElementsKitLibreryData || {};
+    var t, i, n, a = window.UltraAddonsLibraryData || {};
     i = {
         LibraryLayoutView: null,
         LibraryHeaderView: null,
