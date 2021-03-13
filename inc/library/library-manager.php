@@ -12,9 +12,16 @@ class Library_Manager{
     private static $assets;
     private static $dir;
     
-    
-
     public static function init(){
+        self::asset_manage();
+        add_action( 'wp_footer', [__CLASS__, 'test_inline_panel'] );
+    }
+
+    public static function test_inline_panel(){
+        include ULTRA_ADDONS_DIR . 'inc/library/templates/panel.php';
+    }
+
+    public static function inits(){
         self::$dir = dirname(__FILE__) . '/';
         
         //Handle Assets (CSS and JavaScript) File handle/manage. Loading on Screen and Preview Page
@@ -224,7 +231,7 @@ class Library_Manager{
     public static function elementor_preview_style(){
         wp_enqueue_style( 
                 'ultraaddons-library-preview-style', 
-                self::$assets . 'css/preview.css', 
+                self::$assets . 'css/previews.css', 
                 array(), 
                 ULTRA_ADDONS_VERSION
         );
@@ -240,7 +247,7 @@ class Library_Manager{
     public static function elementor_editor_after_style(){
         wp_enqueue_style( 
                 'ultraaddons-library-editor-screen', 
-                self::$assets . 'css/editor.css', 
+                self::$assets . 'css/editors.css', 
                 array(), 
                 ULTRA_ADDONS_VERSION
         );
@@ -255,7 +262,7 @@ class Library_Manager{
     public static function elementor_editor_before_enqueue(){
         wp_enqueue_script( 
                 'ultraaddons-library-editor-script', 
-                self::$assets . 'js/editor.js', 
+                self::$assets . 'js/editors.js', 
                 array('jquery', 'underscore', 'backbone-marionette'), 
                 ULTRA_ADDONS_VERSION,
                 true
