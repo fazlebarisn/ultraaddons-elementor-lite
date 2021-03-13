@@ -410,7 +410,7 @@
         },
         initAizenButton: function() {
             var i = window.elementor.$previewContents.find(".elementor-add-new-section"),
-                n = '<div class="add-elementskit-template ekit-wid-con"><i class="icon icon-ekit"></i></div>';
+                n = '<div class="add-elementskit-template ekit-wid-con" title="Add UltraAddons Ready Content"><i class="uicon uicon-ultraaddons"></i></div>';
             i.find(".add-elementskit-template").length || (i.length && a.libraryButton && e(n).prependTo(i), window.elementor.$previewContents.on("click.addElementsKitTemplate", ".elementor-editor-section-settings .elementor-editor-element-add", function() {
                 var i = e(this).closest(".elementor-top-section"),
                     l = i.data("model-cid");

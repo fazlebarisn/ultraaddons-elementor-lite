@@ -29,7 +29,7 @@ class Library_Manager{
         //var_dump(\Elementor\Plugin::instance()->templates_manager);
         
 //        add_action( 'elementor/init', [__CLASS__, 'testing'] );
-//        add_action( 'elementor/ajax/register_actions', [__CLASS__, 'register_ajax_actions'] );
+        add_action( 'elementor/ajax/register_actions', [__CLASS__, 'register_ajax_actions'] );
     }
     
     public static function register_ajax_actions( Ajax $ajax ) {
