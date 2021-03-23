@@ -901,9 +901,63 @@ class Slider extends Base{
                     'animate__fadeOutBottomLeft' => __( 'fadeOutBottomLeft', 'ultraaddons' ),
                     'animate__fadeOutBottomRight' => __( 'fadeOutBottomRight', 'ultraaddons' ),
                     
-                    //Flippers
-                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
-                    'sssssssss' => __( 'sssssssss', 'ultraaddons' ),
+                    // Flippers
+                    'animate__flip' => __( 'animate__flip', 'ultraaddons' ),
+                    'animate__flipInX' => __( 'animate__flipInX', 'ultraaddons' ),
+                    'animate__flipInY' => __( 'animate__flipInY', 'ultraaddons' ),
+                    'animate__flipOutX' => __( 'animate__flipOutX', 'ultraaddons' ),
+                        
+                    // Lightspeed
+                    'animate__lightSpeedInRight' => __( 'animate__lightSpeedInRight', 'ultraaddons' ),
+                    'animate__lightSpeedInLeft' => __( 'animate__lightSpeedInLeft', 'ultraaddons' ),
+                    'animate__lightSpeedOutRight' => __( 'animate__lightSpeedOutRight', 'ultraaddons' ),
+                    'animate__lightSpeedOutLeft' => __( 'animate__lightSpeedOutLeft', 'ultraaddons' ),
+
+                    // Rotating entrances
+                    'animate__rotateIn' => __( 'animate__rotateIn', 'ultraaddons' ),
+                    'animate__rotateInDownLeft' => __( 'animate__rotateInDownLeft', 'ultraaddons' ),
+                    'animate__rotateInDownRight' => __( 'animate__rotateInDownRight', 'ultraaddons' ),
+                    'animate__rotateInUpLeft' => __( 'animate__rotateInUpLeft', 'ultraaddons' ),
+                    'animate__rotateInUpRight' => __( 'animate__rotateInUpRight', 'ultraaddons' ),
+
+                    // Rotating exits
+                    'animate__rotateOut' => __( 'animate__rotateOut', 'ultraaddons' ),
+                    'animate__rotateOutDownLeft' => __( 'animate__rotateOutDownLeft', 'ultraaddons' ),
+                    'animate__rotateOutDownRight' => __( 'animate__rotateOutDownRight', 'ultraaddons' ),
+                    'animate__rotateOutUpLeft' => __( 'animate__rotateOutUpLeft', 'ultraaddons' ),
+                    'animate__rotateOutUpRight' => __( 'animate__rotateOutUpRight', 'ultraaddons' ),
+
+                    // Specials
+                    'animate__hinge' => __( 'animate__hinge', 'ultraaddons' ),
+                    'animate__jackInTheBox' => __( 'animate__jackInTheBox', 'ultraaddons' ),
+                    'animate__rollIn' => __( 'animate__rollIn', 'ultraaddons' ),
+                    'animate__rollOut' => __( 'animate__rollOut', 'ultraaddons' ),
+
+                    // Zooming entrances
+                    'animate__zoomIn' => __( 'animate__zoomIn', 'ultraaddons' ),
+                    'animate__zoomInDown' => __( 'animate__zoomInDown', 'ultraaddons' ),
+                    'animate__zoomInLeft' => __( 'animate__zoomInLeft', 'ultraaddons' ),
+                    'animate__zoomInRight' => __( 'animate__zoomInRight', 'ultraaddons' ),
+                    'animate__zoomInUp' => __( 'animate__zoomInUp', 'ultraaddons' ),
+
+                    // Zooming exits
+                    'animate__zoomOut' => __( 'animate__zoomOut', 'ultraaddons' ),
+                    'animate__zoomOutDown' => __( 'animate__zoomOutDown', 'ultraaddons' ),
+                    'animate__zoomOutLeft' => __( 'animate__zoomOutLeft', 'ultraaddons' ),
+                    'animate__zoomOutRight' => __( 'animate__zoomOutRight', 'ultraaddons' ),
+                    'animate__zoomOutUp' => __( 'animate__zoomOutUp', 'ultraaddons' ),
+
+                    // Sliding entrances
+                    'animate__slideInDown' => __( 'animate__slideInDown', 'ultraaddons' ),
+                    'animate__slideInLeft' => __( 'animate__slideInLeft', 'ultraaddons' ),
+                    'animate__slideInRight' => __( 'animate__slideInRight', 'ultraaddons' ),
+                    'animate__slideInUp' => __( 'animate__slideInUp', 'ultraaddons' ),
+
+                    // Sliding exits
+                    'animate__slideOutDown' => __( 'animate__slideOutDown', 'ultraaddons' ),
+                    'animate__slideOutLeft' => __( 'animate__slideOutLeft', 'ultraaddons' ),
+                    'animate__slideOutRight' => __( 'animate__slideOutRight', 'ultraaddons' ),
+                    'animate__slideOutRight' => __( 'animate__slideOutRight', 'ultraaddons' ),
 
                 ];
                 
